@@ -1,22 +1,30 @@
 package com.training.todo_list.model.models;
 
+import android.support.annotation.Nullable;
+
 import com.training.todo_list.utils.StringUtils;
 
 import java.util.Date;
 import java.util.UUID;
 
+/**
+ * A "Todo" is uniquely identified by an id and a description (2 Todos cannot
+ * have the same description). The description is entered by user. The timeCreation correspond to
+ * the moment where the user asked to create the "Todo". IdTodoType is a link to a todoType.
+ * IsDone is also choosen by user through interface.
+ */
 public class Todo {
 
     private String mSDescription;
-    private Date mDayCreation;
-    private UUID mIdTodoType;
+    private Date mTimeCreation;
+    @Nullable private UUID mIdTodoType;
     private boolean mBIsDone;
     private UUID mId;
 
     public Todo(String pSDescription, Date pDayCreation,
                 UUID pIdTodoType, boolean pBIsDone, UUID pId) {
         mSDescription = pSDescription;
-        mDayCreation = pDayCreation;
+        mTimeCreation = pDayCreation;
         mIdTodoType = pIdTodoType;
         mBIsDone = pBIsDone;
         mId = pId;
@@ -26,11 +34,11 @@ public class Todo {
         return mSDescription;
     }
 
-    public Date dayCreation() {
-        return mDayCreation;
+    public Date timeCreation() {
+        return mTimeCreation;
     }
 
-    public UUID mIdTodoType() {
+    @Nullable public UUID idTodoType() {
         return mIdTodoType;
     }
 

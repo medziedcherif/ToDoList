@@ -14,24 +14,24 @@ import java.util.UUID;
 public class TodoUnit {
 
     @NonNull private String mSDescription;
-    @NonNull private String mSDateCreation;
-    private Date mDateCreation;
+    @NonNull private String mSTimeCreation;
+    private Date mTimeCreation;
     private boolean mBIsDone;
     private int mIColor;
     private UUID mIdTodo;
 
 
-    private TodoUnit(@NonNull String pSDescription, @NonNull String pSDayCreation,
-                     Date pDateCreation, boolean pBIsDone, int pIColor) {
+    private TodoUnit(@NonNull String pSDescription, @NonNull String pSTimeCreation,
+                     Date pTimeCreation, boolean pBIsDone, int pIColor) {
         mSDescription = pSDescription;
-        mSDateCreation = pSDayCreation;
+        mSTimeCreation = pSTimeCreation;
         mBIsDone = pBIsDone;
         mIColor = pIColor;
     }
 
-    private TodoUnit(String pSName, String pSDateCreation,
-                     Date pDateCreation, boolean pBIsDone, int pIColor, UUID pIdTodo) {
-        this(pSName, pSDateCreation, pDateCreation, pBIsDone, pIColor);
+    private TodoUnit(String pSName, String pSTimeCreation,
+                     Date pTimeCreation, boolean pBIsDone, int pIColor, UUID pIdTodo) {
+        this(pSName, pSTimeCreation, pTimeCreation, pBIsDone, pIColor);
         mIdTodo = pIdTodo;
     }
 
@@ -40,12 +40,12 @@ public class TodoUnit {
         return mSDescription;
     }
 
-    public @NonNull String dateCreationFormatted() {
-        return mSDateCreation;
+    public @NonNull String timeCreationFormatted() {
+        return mSTimeCreation;
     }
 
-    public Date dateCreation() {
-        return mDateCreation;
+    public Date timeCreation() {
+        return mTimeCreation;
     }
 
     public boolean isDone() {
@@ -76,13 +76,13 @@ public class TodoUnit {
             if (null == pTodo || null == pTodoType)
                 return defaultUnit(mStringUtils);
             String tSDescription = descriptionOf(pTodo);
-            String tSDayCreation = dayCreationOf(pTodo);
-            Date pDayCreation = pTodo.dayCreation();
+            String tSTimeCreation = timeCreationOf(pTodo);
+            Date pTimeCreation = pTodo.timeCreation();
             boolean tBIsDone = pTodo.isDone();
             int tIColor = colorOf(pTodoType);
             UUID tIdTodo = pTodo.id();
             return new TodoUnit(tSDescription,
-                    tSDayCreation, pDayCreation, tBIsDone, tIColor, tIdTodo);
+                    tSTimeCreation, pTimeCreation, tBIsDone, tIColor, tIdTodo);
         }
         private String descriptionOf(Todo pTodo) {
             String tSDescription = pTodo.description();
@@ -90,22 +90,23 @@ public class TodoUnit {
                     mStringUtils.stringFor(R.string.todo_default_name) :
                     tSDescription;
         }
-        private String dayCreationOf(Todo pTodo) {
-            Date tDateCreation = pTodo.dayCreation();
+        private String timeCreationOf(Todo pTodo) {
+            Date tDateCreation = pTodo.timeCreation();
             return (null == tDateCreation) ?
                     mStringUtils.stringFor(R.string.todo_default_date) :
-                    mStringUtils.dayFor(tDateCreation);
+                    mStringUtils.timeFor(tDateCreation);
         }
         private int colorOf(TodoType pTodoType) {
             String tSColor = pTodoType.color();
             return mStringUtils.colorFor(tSColor, defaultColor);
         }
 
+
         private TodoUnit defaultUnit(StringUtils pStringUtils) {
             String tSDescription = pStringUtils.stringFor(R.string.todo_default_name);
-            Date tDayToday = new Date();
-            String tSDayCreation = pStringUtils.dayFor(tDayToday);
-            return new TodoUnit(tSDescription, tSDayCreation, tDayToday, false, defaultColor);
+            Date tTimeNow = new Date();
+            String tSTimeCreation = pStringUtils.dayFor(tTimeNow);
+            return new TodoUnit(tSDescription, tSTimeCreation, tTimeNow, false, defaultColor);
         }
     }
 }

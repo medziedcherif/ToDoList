@@ -4,6 +4,10 @@ import com.training.todo_list.utils.StringUtils;
 
 import java.util.UUID;
 
+/**
+ * TodoTypes can provide additional information about a Todo. The name should provide information
+ * about the emergency of a given Todo, and color add a visual impact to distinguish todo.
+ */
 public class TodoType {
 
     private String mSName;

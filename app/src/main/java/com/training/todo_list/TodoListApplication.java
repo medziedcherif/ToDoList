@@ -12,6 +12,9 @@ import java.util.UUID;
 
 public class TodoListApplication extends Application {
 
+    /**
+     * Initialize application with some dumb Todo & TodoType.
+     */
     @Override
     public void onCreate() {
         super.onCreate();
