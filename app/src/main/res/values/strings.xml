@@ -1,0 +1,11 @@
+<resources>
+
+    <string name="app_name">TodoList</string>
+
+    <string name="todo_default_name">"Enter name"</string>
+    <string name="todo_default_date">"No date"</string>
+
+
+
+
+</resources>
