@@ -36,6 +36,16 @@ public class TodoManager {
         return null;
     }
 
+    public void todoEdit( Todo pTodo, Todo tTodo) {
+       mTodos.remove(tTodo);
+       mTodos.add(pTodo);
+    }
+
+    public void todoDone( Todo pTodo) {
+        mTodos.remove(pTodo);
+        Todo tTodo = new Todo(pTodo.description(), pTodo.timeCreation(), pTodo.idTodoType(), true, pTodo.id());
+        mTodos.add(tTodo);
+    }
 
     public void save(Todo pTodo) {
         if (null != pTodo && null != pTodo.id())

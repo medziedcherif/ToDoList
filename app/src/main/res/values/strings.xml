@@ -9,5 +9,7 @@
     <string name="dialog_message_surprise">"If you want, you can add a little something to this todoList application."
         "It can be a new feature, an animation, just some wonderful code, or how to use a library you really like. Be original :)"</string>
     <string name="confirm">"Confirm"</string>
+    <string name="valider">valider</string>
+    <string name="hint">description for your todo</string>
 
 </resources>
